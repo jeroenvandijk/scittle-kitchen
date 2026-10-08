@@ -339,9 +339,10 @@
                            release {:task (scittle.build/build {})}}})
     (pretty-spit (fs/file build-dir "deps.edn")
                  {:deps scittle-deps})
-    ;; Avoid React version conflicts
+    ;; Avoid React and Process version conflicts
     (spit (fs/file build-dir "package.json")
-          (json/generate-string {:dependencies {:react "18.3.1"
+          (json/generate-string {:dependencies {:process "0.11.10"
+                                                :react "18.3.1"
                                                 :react-dom "18.3.1"}}))
     (let [public-dir (fs/file build-dir "resources" "public")
           manifest-data (manifest plugins plugin-roots)]
